@@ -12,4 +12,5 @@ message EchoRequest {
 
 message EchoResponse {
   string message = 1;
+  int32    valid = 2;
 }
