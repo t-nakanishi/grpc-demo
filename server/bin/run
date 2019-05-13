@@ -5,13 +5,14 @@ require "bundler/setup"
 require 'logger'
 require 'grpc'
 require 'echo_services_pb'
+require 'hello_services_pb'
 
-class EchoServer < Echo::Echo::Service
+class HelloServer < Hello::Hello::Service
   EchoLogger = Logger.new(STDOUT)
 
-  def echo(echo_req, _unused_call)
-    EchoLogger.info("echo \"#{echo_req.message}\"")
-    Echo::EchoResponse.new(message: echo_req.message)
+  def hello_api(hello_req, _unused_call)
+    EchoLogger.info("echo \"#{hello_req.message}\"")
+    Hello::HelloResponse.new(message: hello_req.message + "world")
   end
 end
 
@@ -22,7 +23,7 @@ def main
   logger = Logger.new(STDOUT)
   logger.info("... running insecurely on 0.0.0.0:50051")
 
-  s.handle(EchoServer)
+  s.handle(HelloServer)
   # Runs the server with SIGHUP, SIGINT and SIGQUIT signal handlers to 
   #   gracefully shutdown.
   # User could also choose to run server via call to run_till_terminated

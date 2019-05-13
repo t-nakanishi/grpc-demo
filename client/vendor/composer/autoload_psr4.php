@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Grpc\\' => array($vendorDir . '/grpc/grpc/src/lib'),
     '' => array($baseDir . '/lib'),
 );

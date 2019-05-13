@@ -9,6 +9,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "echo.EchoResponse" do
     optional :message, :string, 1
+    optional :valid, :int32, 2
   end
 end
 
